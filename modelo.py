@@ -19,25 +19,36 @@ class Programa:
     def nome(self, novo_nome):
         self._nome = novo_nome.title()
 
+    def imprime(self):
+        print(f'{self.nome} - {self.ano} - {self.likes} likes')
+
 class Filme(Programa):
     def __init__(self, nome, ano, duracao):
-        self._nome = nome.title()
-        self.ano = ano
+        super().__init__(nome, ano)
+        #super ->  vai chamar a classe mãe
         self.duracao = duracao
-        self._likes = 0
+    
+    def imprime(self):
+        print(f'{self.nome} - {self.ano} - {self.duracao} min - {self.likes} likes')
 
 class Serie(Programa):
     def __init__(self,nome ,ano, temporadas):
-        self._nome = nome.title()
-        self.ano = ano
-        self.temporadas = temporadas
-        self._likes = 0
+        super(). __init__(nome,ano)
+        self.temporadas = temporadas 
+    
+    def imprime(self):
+        print(f'{self.nome} - {self.ano} - {self.temporadas} temporadas - {self.likes} likes')
+        #função que representa textualmente nosso código
+
 
 vingadores = Filme('vingadores - Gguerra inifinita', 2018, 160 )
 vingadores.dar_likes()
-print(f'Nome: {vingadores.nome} - Ano: {vingadores.ano} - Duração{vingadores.duracao} - Likes: {vingadores.likes}')
-
 atlanta = Serie('Atlanta', 2018, 4,)
 atlanta.dar_likes()
 atlanta.dar_likes()
-print(f'Nome : {atlanta.nome} - Ano: {atlanta.ano} -Temporadas: {atlanta.temporadas} - likes: {atlanta.likes}')
+print(f'{atlanta.nome} - {atlanta.ano} - {atlanta.temporadas}: {atlanta.likes}')
+
+filmes_e_series = [vingadores, atlanta]
+
+#for programa in filmes_e_series: 
+#    programa.imprime()
